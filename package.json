@@ -4,6 +4,10 @@
 	"description": "Supports resc style development.",
 	"version": "0.0.1",
 	"publisher": "ranqlead",
+	"repository": {
+    "type": "git",
+    "url": "https://github.com/SunriseDigital/recs-style-code"
+  },
 	"engines": {
 		"vscode": "^1.33.0"
 	},
