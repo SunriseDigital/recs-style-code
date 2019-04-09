@@ -11,12 +11,12 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:extension.helloWorld"
+		"onCommand:recsStyleCode.openCurrentVariables"
 	],
 	"main": "./extension.js",
 	"contributes": {
 		"commands": [{
-      "command": "extension.helloWorld",
+      "command": "recsStyleCode.openCurrentVariables",
 			"title": "Open Current Variables",
 			"category": "Recs"
 		}]
