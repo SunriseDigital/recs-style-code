@@ -1,6 +1,8 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 const vscode = require('vscode');
+const fs = require("fs");
+const path = require("path")
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
@@ -9,19 +11,24 @@ const vscode = require('vscode');
  * @param {vscode.ExtensionContext} context
  */
 function activate(context) {
+	const rootPath = vscode.workspace.rootPath
+	const recsRootPath = `${rootPath}/app/assets/stylesheets/recs`
+	const variablesPath = `${recsRootPath}/variables`
 
-	// Use the console to output diagnostic information (console.log) and errors (console.error)
-	// This line of code will only be executed once when your extension is activated
-	console.log('Congratulations, your extension "recs-style-code" is now active!');
-
-	// The command has been defined in the package.json file
-	// Now provide the implementation of the command with  registerCommand
-	// The commandId parameter must match the command field in package.json
 	let disposable = vscode.commands.registerCommand('recsStyleCode.openCurrentVariables', function () {
-		// The code you place here will be executed every time your command is executed
-
-		// Display a message box to the user
-		vscode.window.showErrorMessage('Hello vscode World!');
+		const currentFilePath = vscode.window.activeTextEditor.document.fileName
+		const currentFolder = path.relative(variablesPath, currentFilePath).split(path.sep)[0]
+		
+		fs.readdirSync(`${variablesPath}`).filter(f => {
+			if(!fs.lstatSync(`${variablesPath}/${f}`).isDirectory()) return false
+			if(f == currentFolder) return false
+			return true
+		}).forEach(function(folder){
+			const targetPath = currentFilePath.split(`${variablesPath}/${currentFolder}/`).join(`${variablesPath}/${folder}/`)
+			vscode.workspace.openTextDocument(targetPath).then(doc => {
+				vscode.window.showTextDocument(doc, {preview: false});
+		  });
+		})
 	});
 
 	context.subscriptions.push(disposable);
