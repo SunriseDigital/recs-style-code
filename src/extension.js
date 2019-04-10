@@ -17,6 +17,10 @@ function activate(context) {
 	let disposable = vscode.commands.registerCommand('recsStyleCode.openCurrentVariables', function () {
 		const currentFilePath = vscode.window.activeTextEditor.document.fileName
 
+		if(!variables.isValidPath(currentFilePath)){
+			return
+		}
+
 		variables.otherExistsSiteCodePaths(currentFilePath).forEach(targetPath => {
 			vscode.workspace.openTextDocument(targetPath).then(doc => {
 				vscode.window.showTextDocument(doc, {preview: false});
@@ -28,6 +32,10 @@ function activate(context) {
 
 	disposable = vscode.commands.registerCommand('recsStyleCode.copyCurrentVariableToAll', function () {
 		const currentFilePath = vscode.window.activeTextEditor.document.fileName
+
+		if(!variables.isValidPath(currentFilePath)){
+			return
+		}
 
 		const copiedFiles = []
 		variables.otherSiteCodePaths(currentFilePath).forEach(targetPath => {

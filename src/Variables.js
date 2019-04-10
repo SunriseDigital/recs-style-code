@@ -8,6 +8,15 @@ module.exports = class Variables extends Recs {
     this.variablesPath = `${this.recsRootPath}/variables`
   }
 
+  isValidPath(filePath){
+    if(filePath.startsWith(this.variablesPath)){
+      return true
+    }
+
+    this.vscode.window.showErrorMessage(`${this.toWorkspaceRelativePath(filePath)} is not variables file.`)
+    return false
+  }
+
   getSiteCodeFolder(currentFilePath){
     return path.relative(this.variablesPath, currentFilePath).split(path.sep)[0]
   }
