@@ -15,14 +15,20 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:recsStyleCode.openCurrentVariables"
+		"onCommand:recsStyleCode.openCurrentVariables",
+		"onCommand:recsStyleCode.copyCurrentVariableToAll"
 	],
-	"main": "./extension.js",
+	"main": "./src/extension.js",
 	"contributes": {
 		"commands": [
 			{
 				"command": "recsStyleCode.openCurrentVariables",
 				"title": "Open Current Variables",
+				"category": "Recs"
+			},
+			{
+				"command": "recsStyleCode.copyCurrentVariableToAll",
+				"title": "Copy Current Variable to All",
 				"category": "Recs"
 			}
 		]
