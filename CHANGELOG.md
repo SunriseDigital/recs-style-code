@@ -7,3 +7,12 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 ## [Unreleased]
 
 - Initial release
+
+## [0.0.2] - 2019/04/10
+
+- Recs: Open Current Variables
+- Recs: Copy Current Variable to All
+
+## [0.0.3] - 2019/04/10
+
+- Update README.md

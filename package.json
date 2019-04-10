@@ -2,7 +2,7 @@
 	"name": "recs-style-code",
 	"displayName": "recs-style-code",
 	"description": "Supports resc style development.",
-	"version": "0.0.2",
+	"version": "0.0.3",
 	"publisher": "ranqlead",
 	"repository": {
 		"type": "git",
